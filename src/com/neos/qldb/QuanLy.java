@@ -1,10 +1,40 @@
 package com.neos.qldb;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class QuanLy {
     private DanhBa[] arrDB;
 
     public QuanLy() {
         arrDB = new DanhBa[5];
+    }
+
+    public void sxTenTangDan() {
+        Comparator<DanhBa> sxTenTD = new Comparator<DanhBa>() {
+            @Override
+            public int compare(DanhBa db1, DanhBa db2) {
+                return db1.getTen().compareTo(db2.getTen());
+            }
+        };
+
+        Arrays.sort(arrDB, sxTenTD);
+        inDB();
+    }
+
+    public void sxTienTangDan() {
+        Comparator<DanhBa> sxTenTD = new Comparator<DanhBa>() {
+            @Override
+            public int compare(DanhBa db1, DanhBa db2) {
+                double t1 = db1.getTien();
+                double t2 = db2.getTien();
+
+                return t1 > t2 ? 1 : (t1 < t2 ? -1 : 0);
+            }
+        };
+
+        Arrays.sort(arrDB, sxTenTD);
+        inDB();
     }
 
     public int kiemTraTonTai(String sdt) {
@@ -19,13 +49,13 @@ public class QuanLy {
         return -1;
     }
 
-    public void themDB(int index, String ten, String sdt) {
+    public void themDB(int index, String ten, String sdt, double tien) {
         if (kiemTraTonTai(sdt) >= 0) {
             System.out.println("Đã tồn tại SDT này: " + sdt);
             return;
         }
 
-        arrDB[index] = new DanhBa(ten, sdt);
+        arrDB[index] = new DanhBa(ten, sdt, tien);
         System.out.println("Thêm thành công sdt:" + sdt + " vào danh bạ!");
     }
 

@@ -1,11 +1,13 @@
 package com.neos.qldb;
 
-public class DanhBa {
+public class DanhBa implements Comparable<DanhBa> {
     private String ten, sdt;
+    private double tien;
 
-    public DanhBa(String ten, String sdt) {
+    public DanhBa(String ten, String sdt, double tien) {
         this.ten = ten;
         this.sdt = sdt;
+        this.tien = tien;
     }
 
     public String getTen() {
@@ -14,6 +16,10 @@ public class DanhBa {
 
     public String getSdt() {
         return sdt;
+    }
+
+    public double getTien() {
+        return tien;
     }
 
     public void setTen(String ten) {
@@ -26,6 +32,18 @@ public class DanhBa {
 
     @Override
     public String toString() {
-        return ten + ":" + sdt;
+        return ten + ": " + sdt + " : " + tien;
+    }
+
+    @Override
+    public int compareTo(DanhBa db2) {
+        // sx tên tăng dần, sdt giảm dần
+        int kq = ten.compareTo(db2.ten);
+
+        if (kq == 0) {
+            kq = - sdt.compareTo(db2.sdt);
+        }
+
+        return kq;
     }
 }
