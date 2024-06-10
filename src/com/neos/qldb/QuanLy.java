@@ -110,15 +110,13 @@ public class QuanLy {
             if ( db != null ) {
                 int index = 0;
                 while (index < gtTen.length()) {
-
+                    db.getTen().contains(gtTen);
 
                     index++;
                 }
             }
 
-            if ( db.getTen().contains(gtTen) ) {
-                System.out.println(db.getTen() + " " + db.getSdt());
-            }
+
         }
     }
 }
