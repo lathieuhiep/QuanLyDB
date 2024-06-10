@@ -10,6 +10,7 @@ public class QuanLy {
         arrDB = new DanhBa[5];
     }
 
+    // sx ten tang dan
     public void sxTenTangDan() {
         Comparator<DanhBa> sxTenTD = new Comparator<DanhBa>() {
             @Override
@@ -22,6 +23,7 @@ public class QuanLy {
         inDB();
     }
 
+    // sx tien tang dan
     public void sxTienTangDan() {
         Comparator<DanhBa> sxTenTD = new Comparator<DanhBa>() {
             @Override
@@ -37,6 +39,7 @@ public class QuanLy {
         inDB();
     }
 
+    // kiem tra ton tai
     public int kiemTraTonTai(String sdt) {
         for (int i = 0; i < arrDB.length; i++) {
             DanhBa db = arrDB[i];
@@ -49,6 +52,7 @@ public class QuanLy {
         return -1;
     }
 
+    // thêm danh bạ
     public void themDB(int index, String ten, String sdt, double tien) {
         if (kiemTraTonTai(sdt) >= 0) {
             System.out.println("Đã tồn tại SDT này: " + sdt);
@@ -59,6 +63,7 @@ public class QuanLy {
         System.out.println("Thêm thành công sdt:" + sdt + " vào danh bạ!");
     }
 
+    // in danh bạ
     public void inDB() {
         System.out.println("Danh bạ của tôi!");
 
@@ -73,6 +78,7 @@ public class QuanLy {
         }
     }
 
+    // sửa danh bạ
     public void suaDB(String sdtCu, String sdtMoi) {
         int viTri = kiemTraTonTai(sdtCu);
 
@@ -92,5 +98,27 @@ public class QuanLy {
         arrDB[viTri].setSdt(sdtMoi);
         System.out.println("\nSửa thành công");
         inDB();
+    }
+
+    // tìm kiếm danh bạ
+    public void timKiemDB(String gtTen) {
+        System.out.println("Kết quả tìm kiếm:");
+
+        for (int i = 0; i < arrDB.length; i++) {
+            DanhBa db = arrDB[i];
+
+            if ( db != null ) {
+                int index = 0;
+                while (index < gtTen.length()) {
+
+
+                    index++;
+                }
+            }
+
+            if ( db.getTen().contains(gtTen) ) {
+                System.out.println(db.getTen() + " " + db.getSdt());
+            }
+        }
     }
 }
