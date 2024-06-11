@@ -106,17 +106,6 @@ public class QuanLy {
 
         for (int i = 0; i < arrDB.length; i++) {
             DanhBa db = arrDB[i];
-
-            if ( db != null ) {
-                int index = 0;
-                while (index < gtTen.length()) {
-                    db.getTen().contains(gtTen);
-
-                    index++;
-                }
-            }
-
-
         }
     }
 }
