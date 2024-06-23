@@ -46,4 +46,13 @@ public class DanhBa implements Comparable<DanhBa> {
 
         return kq;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof DanhBa) {
+            return ((DanhBa) obj).sdt.equals(sdt);
+        }
+
+        return super.equals(obj);
+    }
 }
