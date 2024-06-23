@@ -101,6 +101,12 @@ public class QuanLy {
     }
 
     // tìm kiếm danh bạ
+    // Thang
+    // ToHoang
+    // HoangTo
+    // luu vi tri tìm kiếm vị trí đàng trước
+    // Tìm từ ví trí start -> length
+    // dùng indexOf
     public void timKiemDB(String gtTen) {
         System.out.println("Kết quả tìm kiếm:");
 
