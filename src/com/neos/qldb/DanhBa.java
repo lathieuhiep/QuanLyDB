@@ -4,7 +4,7 @@ public class DanhBa implements Comparable<DanhBa> {
     private String ten, sdt;
     private double tien;
 
-    public DanhBa(String ten, String sdt, double tien) {
+    public DanhBa(int index, String ten, String sdt, double tien) {
         this.ten = ten;
         this.sdt = sdt;
         this.tien = tien;

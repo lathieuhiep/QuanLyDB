@@ -1,6 +1,7 @@
 package com.neos.qldb;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class QuanLy {
     private ArrayList<DanhBa> listDB;
@@ -39,21 +40,27 @@ public class QuanLy {
 //    }
 
     // kiem tra ton tai
-    public int kiemTraTonTai(Object danhBa) {
-        return listDB.indexOf(danhBa);
+    public boolean kiemTraTonTai(String sdt) {
+        for (int i = 0; i < listDB.size(); i++) {
+            DanhBa danhBa = listDB.get(i);
+
+            if ( danhBa.getSdt().equals(sdt) ) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // thêm danh bạ
     public void themDB(int index, String ten, String sdt, double tien) {
-        DanhBa danhBa = new DanhBa(ten, sdt, tien);
+        DanhBa danhBa = new DanhBa(index, ten, sdt, tien);
 
-        if (kiemTraTonTai(danhBa) == -1) {
+        if ( kiemTraTonTai(sdt) ) {
+            System.err.println("Err: Đã tồn tại SDT này: " + sdt);
+        } else {
             listDB.add(danhBa);
             System.out.println("Thêm thành công sdt:" + sdt + " vào danh bạ!");
-            return;
         }
-
-        System.err.println("Err: Đã tồn tại SDT này: " + sdt);
     }
 
     // in danh bạ
