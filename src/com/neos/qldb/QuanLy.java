@@ -4,11 +4,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class QuanLy {
-    private ArrayList<DanhBa> listDB;
+    private static ArrayList<DanhBa> listDB = new ArrayList<>();
 
-    public QuanLy() {
-        listDB = new ArrayList<DanhBa>();
-    }
 
     // sx ten tang dan
 //    public void sxTenTangDan() {
@@ -40,11 +37,9 @@ public class QuanLy {
 //    }
 
     // kiem tra ton tai
-    public boolean kiemTraTonTai(String sdt) {
-        for (int i = 0; i < listDB.size(); i++) {
-            DanhBa danhBa = listDB.get(i);
-
-            if ( danhBa.getSdt().equals(sdt) ) {
+    public static boolean kiemTraTonTai(String sdt) {
+        for (DanhBa danhBa : listDB) {
+            if (danhBa.getSdt().equals(sdt)) {
                 return true;
             }
         }
@@ -52,7 +47,7 @@ public class QuanLy {
     }
 
     // thêm danh bạ
-    public void themDB(int index, String ten, String sdt, double tien) {
+    public static void themDB(int index, String ten, String sdt, double tien) {
         DanhBa danhBa = new DanhBa(index, ten, sdt, tien);
 
         if ( kiemTraTonTai(sdt) ) {
@@ -64,13 +59,13 @@ public class QuanLy {
     }
 
     // in danh bạ
-    public void inDB() {
+    public static void inDB() {
         System.out.println("Danh bạ của tôi!");
         System.out.println(listDB);
     }
 
     // sửa danh bạ
-    public void suaDB(String sdtCu, String sdtMoi) {
+    public static void suaDB(String sdtCu, String sdtMoi) {
         if (kiemTraTonTai(sdtMoi)) {
             System.out.println("Số điện thoại mới đã tồn tại trong danh bạ");
             return;
@@ -93,7 +88,7 @@ public class QuanLy {
     }
 
     // tìm kiếm danh bạ
-    public void timKiemDB(String gtTen) {
+    public static void timKiemDB(String gtTen) {
         System.out.println("Kết quả tìm kiếm:");
 
         for (int i = 0; i < listDB.size(); i++) {
