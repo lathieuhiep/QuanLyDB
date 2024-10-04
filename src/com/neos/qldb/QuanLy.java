@@ -4,8 +4,20 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class QuanLy {
-    private static ArrayList<DanhBa> listDB = new ArrayList<>();
+    private ArrayList<DanhBa> listDB;
+    private static QuanLy instance;
 
+    public QuanLy() {
+        listDB = new ArrayList<>();
+    }
+
+    public static QuanLy getInstance() {
+        if (instance == null) {
+            instance = new QuanLy();
+        }
+
+        return instance;
+    }
 
     // sx ten tang dan
 //    public void sxTenTangDan() {
@@ -37,35 +49,36 @@ public class QuanLy {
 //    }
 
     // kiem tra ton tai
-    public static boolean kiemTraTonTai(String sdt) {
+    public boolean kiemTraTonTai(String sdt) {
         for (DanhBa danhBa : listDB) {
             if (danhBa.getSdt().equals(sdt)) {
                 return true;
             }
         }
+
         return false;
     }
 
     // thêm danh bạ
-    public static void themDB(int index, String ten, String sdt, double tien) {
+    public void themDB(int index, String ten, String sdt, double tien) {
         DanhBa danhBa = new DanhBa(index, ten, sdt, tien);
 
         if ( kiemTraTonTai(sdt) ) {
             System.err.println("Err: Đã tồn tại SDT này: " + sdt);
         } else {
             listDB.add(danhBa);
-            System.out.println("Thêm thành công sdt:" + sdt + " vào danh bạ!");
+            System.out.println("Thêm thành công sdt: " + sdt + " vào danh bạ!");
         }
     }
 
     // in danh bạ
-    public static void inDB() {
+    public void inDB() {
         System.out.println("Danh bạ của tôi!");
         System.out.println(listDB);
     }
 
     // sửa danh bạ
-    public static void suaDB(String sdtCu, String sdtMoi) {
+    public void suaDB(String sdtCu, String sdtMoi) {
         if (kiemTraTonTai(sdtMoi)) {
             System.out.println("Số điện thoại mới đã tồn tại trong danh bạ");
             return;
@@ -88,7 +101,7 @@ public class QuanLy {
     }
 
     // tìm kiếm danh bạ
-    public static void timKiemDB(String gtTen) {
+    public void timKiemDB(String gtTen) {
         System.out.println("Kết quả tìm kiếm:");
 
         for (int i = 0; i < listDB.size(); i++) {
